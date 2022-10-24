@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relacion de Pacientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="/proyecto/css/propio.css" rel="stylesheet">     
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow p-3 mb-5">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">HealthySoft-TIC</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+              <a class="nav-link" href="pacientes.html">Pacientes</a>
+            </div>
+          </div>
+        </div>
+      </nav> 
+      
+      <div class = "container-sm">
+      <table class="table table-hover table-primary table-sm shadow p-3 mb-5 caption-top table-responsive">
+        
+        <caption>Listado de Pacientes</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Primer Nombre</th>
+            <th scope="col">Segundo Nombre</th>
+            <th scope="col">Primer Apellido</th>
+            <th scope="col">Segundo Apellido</th>
+            <th scope="col">Correo</th>
+            <th scope="col" colspan="2">Accion</th>
+          </tr>
+        </thead>
+        <tbody id="Tablecuerpo" class="table-group-divider">
+          
+          <script src="/proyecto/js/desarrollo.js"></script>
+          <script>CargarPacientes()</script>
+          
+          <!--
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="4">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>-->
+        </tbody>
+      
+      </table>
+    </div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary shadow p-3 mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Crear Paciente
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Paciente</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Identificacion</label>
+              <input type="text" class="form-control" id="Identificacion" placeholder="Ingresar indentificacion">
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Primer Nombre</label>
+              <input type="text" class="form-control" id="primer_nombre" placeholder="Ingresar Primer Nombre">
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Segundo Nombre</label>
+              <input type="text" class="form-control" id="segundo_nombre" placeholder="Ingresar Segundo Nombre">
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Primer Apellido</label>
+              <input type="text" class="form-control" id="primer_apellido" placeholder="Ingresar Primer Apellido">
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Segundo Apellido</label>
+              <input type="text" class="form-control" id="segundo_apellido" placeholder="Ingresar Segundo Apellido">
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Correo</label>
+              <input type="text" class="form-control" id="correo" placeholder="Ingresar Correo">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar </button>
+            <button type="button" onclick="guardarPacientes()" class="btn btn-primary" data-bs-dismiss="modal">Guardar Paciente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="editarPaciente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Paciente</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Identificacion</label>
+              <input type="text" class="form-control" id="IdEd" placeholder="Id">
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Identificacion</label>
+              <input type="text" class="form-control" id="IdentificacionEd" placeholder="Ingresar indentificacion">
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Primer Nombre</label>
+              <input type="text" class="form-control" id="primer_nombreEd" placeholder="Ingresar Primer Nombre">
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Segundo Nombre</label>
+              <input type="text" class="form-control" id="segundo_nombreEd" placeholder="Ingresar Segundo Nombre">
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Primer Apellido</label>
+              <input type="text" class="form-control" id="primer_apellidoEd" placeholder="Ingresar Primer Apellido">
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Segundo Apellido</label>
+              <input type="text" class="form-control" id="segundo_apellidoEd" placeholder="Ingresar Segundo Apellido">
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Correo</label>
+              <input type="text" class="form-control" id="correoEd" placeholder="Ingresar Correo">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar </button>
+            <button type="button" onclick="actualizarPacientes()" class="btn btn-primary" data-bs-dismiss="modal">Actualizar Paciente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+      
+</body>
+</html>
